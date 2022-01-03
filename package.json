@@ -1,0 +1,42 @@
+{
+  "name": "ddd-cargo",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "test": "pnpm run test:unit",
+    "test:unit": "concurrently \"pnpm run test:unit:domain\" \"pnpm run test:unit:application\"",
+    "test:unit:domain": "pnpm run test:unit --filter @ddd-cargo/domain",
+    "test:unit:application": "pnpm run test:unit --filter @ddd-cargo/application",
+    "build:all": "concurrently \"pnpm run build:domain\" \"pnpm run build:application\"",
+    "build:all:watch": "concurrently \"build:domain:watch\" \"build:application:watch\"",
+    "build:domain": "pnpm run build --filter @ddd-cargo/domain",
+    "build:domain:watch": "pnpm run build:watch --filter @ddd-cargo/domain",
+    "build:application": "pnpm run build --filter @ddd-cargo/application",
+    "build:application:watch": "pnpm run build:watch --filter @ddd-cargo/application",
+    "install:all": "pnpm recursive install"
+  },
+  "devDependencies": {
+    "@types/node": "^16.11.17",
+    "@typescript-eslint/eslint-plugin": "^5.8.1",
+    "@typescript-eslint/parser": "^5.8.1",
+    "concurrently": "^6.5.1",
+    "eslint": "^8.5.0",
+    "eslint-config-airbnb-typescript": "^16.1.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.25.3",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-security": "^1.4.0",
+    "eslint-plugin-unused-imports": "^2.0.0",
+    "nodemon": "^2.0.15",
+    "prettier": "^2.5.1",
+    "ts-jest": "^27.1.2",
+    "ts-node": "^10.4.0",
+    "tsconfig-paths": "^3.12.0",
+    "typescript": "^4.5.4"
+  },
+  "author": "Alex Kalashnikov",
+  "license": "MIT",
+  "workspaces": [
+    "packages/*"
+  ]
+}
